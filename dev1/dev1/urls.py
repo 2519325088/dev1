@@ -1,3 +1,5 @@
+#项目的URL声明
+
 """dev1 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

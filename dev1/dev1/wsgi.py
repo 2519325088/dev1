@@ -1,3 +1,5 @@
+#项目与WSGI兼容的Web服务器入口
+
 """
 WSGI config for dev1 project.
 

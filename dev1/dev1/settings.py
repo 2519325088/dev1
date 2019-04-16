@@ -1,3 +1,4 @@
+#项目的配置
 """
 Django settings for dev1 project.
 
@@ -9,6 +10,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+
 
 import os
 
