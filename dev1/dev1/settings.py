@@ -79,7 +79,12 @@ WSGI_APPLICATION = 'dev1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # BASE_DIR  指项目根目录
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'NAME':'demo1db',
+        # 'USER':'root',
+        # 'PASSWOED':'root',
     }
 }
 
