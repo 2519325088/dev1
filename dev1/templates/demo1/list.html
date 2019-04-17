@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>书籍名称</h1>
+    <ul>
+
+        {% for i in lista %}
+            <li><a href="{% url 'demo1:detail' i.id %}">{{i.btitle}}</a></li>
+        {% empty %}
+            <h3>没有书</h3>
+        {% endfor %}
+
+    </ul>
+
+    {#<a href="/demo1/">回到首页</a>#}
+    <a href="{% url 'demo1:index' %}">回到首页</a>
+
+</body>
+</html>

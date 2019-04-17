@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'demo1'
+    'demo1'   #配置项目
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'dev1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],  #配置网页文件的目录
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,13 +78,13 @@ WSGI_APPLICATION = 'dev1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',   #默认数据库  aqlite3
+        # 'ENGINE': 'django.db.backends.mysql',   #配置数据库为mysql
         # BASE_DIR  指项目根目录
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'NAME':'demo1db',
-        # 'USER':'root',
-        # 'PASSWOED':'root',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),   #生成数据库文件
+        # 'NAME':'demo1db',             #配置数据库名称
+        # 'USER':'root',                #配置数据库账户
+        # 'PASSWOED':'root',            #配置数据库密码
     }
 }
 
@@ -112,10 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 # LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'zh-Hans'
+LANGUAGE_CODE = 'zh-Hans'  #配置语言
 
 # TIME_ZONE = 'UTC'
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = 'Asia/Shanghai'  #配置时间
 
 USE_I18N = True
 

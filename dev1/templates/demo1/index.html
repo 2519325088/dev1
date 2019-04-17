@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {%if username%}
+        <h2>{{username}}</h2>
+    {%else%}
+        <h2>你不在这里</h2>
+    {%endif%}
+
+    {#超级链接硬编码#}
+    {#<a href="/demo1/list/">进入list</a>#}
+
+    {#去除硬编码#}
+    <a href="{% url 'demo1:list' %}">进入list</a>
+
+
+</body>
+</html>
