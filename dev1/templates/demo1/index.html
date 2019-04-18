@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/index.css' %}">
+    {#<link rel="stylesheet" href="/static/css/index.css">#}
 </head>
 <body>
-    {%if username%}
-        <h2>{{username}}</h2>
-    {%else%}
-        <h2>你不在这里</h2>
-    {%endif%}
+    <div>
+        
+        {%if username%}
+            <h2>{{username}}</h2>
+        {%else%}
+            <h2>你不在这里</h2>
+        {%endif%}
+    
+        {#超级链接硬编码#}
+        {#<a href="/demo1/list/">进入list</a>#}
+    
+        {#去除硬编码#}
+        <a href="{% url 'demo1:list' %}">进入list</a>
+    </div>
 
-    {#超级链接硬编码#}
-    {#<a href="/demo1/list/">进入list</a>#}
 
-    {#去除硬编码#}
-    <a href="{% url 'demo1:list' %}">进入list</a>
+    <!--<img src="/static/img/111.gif" alt="加载失败">-->
+    <img src="{% static '/img/111.gif' %}" alt="加载失败">
 
 
 </body>

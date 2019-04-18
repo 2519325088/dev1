@@ -9,7 +9,9 @@
     <ul>
 
         {% for i in lista %}
-            <li><a href="{% url 'demo1:detail' i.id %}">{{i.btitle}}</a></li>
+            <li><a href="{% url 'demo1:detail' i.id %}">{{i.btitle}}</a>
+                <a href="{% url 'demo1:delete' i.id %}">删除</a>
+            </li>
         {% empty %}
             <h3>没有书</h3>
         {% endfor %}

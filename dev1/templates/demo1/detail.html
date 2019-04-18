@@ -14,6 +14,7 @@
         {% endfor %}
 
     </ul>
+    <a href="{% url 'demo1:addhero' bname.id %}">添加</a>
 
     <a href="{% url 'demo1:list' %}">返回列表</a>
     <a href="{% url 'demo1:index' %}">回到首页</a>

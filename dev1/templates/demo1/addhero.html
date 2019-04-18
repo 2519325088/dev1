@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form action="{% url 'demo1:addend' %}" method="post">
+
+        人物名称：<input type="text" name="username" value="">
+        人物性别：男<input type="radio" name="usersex" value="1"> 女 <input type="radio" name="usersex" value="0">
+        人物绝招：<input type="text" name="userskill" value="">
+        <input type="hidden" value="{{bookk.id}}"  name="userid">
+        <input type="submit" value="添加">
+
+    </form>
+
+
+
+    <a href="{% url 'demo1:detail' bookk.id %}">返回详情</a>
+    <a href="{% url 'demo1:list' %}">返回列表</a>
+    <a href="{% url 'demo1:index' %}">回到首页</a>
+
+
+</body>
+</html>

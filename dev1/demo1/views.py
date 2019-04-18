@@ -4,7 +4,7 @@
 
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 
 from .models import BookInfo ,HeroInfo
 
@@ -14,42 +14,55 @@ from django.template import loader
 
 
 def index(request):
-    # indextem=loader.get_template('demo1/index.html')
-    # cont = {'username':'lxl'}
-    # result = indextem.render(cont)
-    # return HttpResponse(result)
-
-    # print("请求",request)
-    # return HttpResponse("首页")
     return render(request,'demo1/index.html',{'username':'lxl'})
 
 
 def list(request):
-    # print("请求",request)
-    # return HttpResponse("list")
     bookInfo=BookInfo.objects.all()
     return render(request,'demo1/list.html',{'lista':bookInfo})
 
 
+def delete(request,id):
+    BookInfo.objects.get(pk=id).delete()
+
+    bookInfo = BookInfo.objects.all()
+    # return HttpResponse('11')
+    return HttpResponseRedirect('/demo1/list/',{'lista':bookInfo})
 
 
-# def list1(request,id):
-#     print("请求",request)
-#     return HttpResponse("list"+str(id))
+def addhero(request,id):
+    book=BookInfo.objects.get(pk=id)
+    return render(request,'demo1/addhero.html', {'bookk': book})
+
+def addend(request):
+
+    hname=request.POST['username']
+    hsex=request.POST['usersex']
+    hskill = request.POST['userskill']
+    userid=request.POST['userid']
+    book=BookInfo.objects.get(pk=userid)
+
+    hero=HeroInfo()
+    hero.hname=hname
+    if hsex:
+        hero.hgender=True
+    else:
+        hero.hgender=False
+    hero.hcontent=hskill
+    hero.hbook=book
+    print(hname,hsex,hskill,book)
+    hero.save()
+    return  HttpResponseRedirect('/demo1/detail/'+str(userid)+'/',{'bname':book})
+
 
 
 def detail(request,id):
+    try:
+        name = BookInfo.objects.get(pk=id)
+        return render(request, 'demo1/detail.html', {'bname': name})
 
-    name = BookInfo.objects.get(pk=id)
-    # return HttpResponse('11')
-    return render(request,'demo1/detail.html',{'bname':name})
-
-    # try:
-    #     name = BookInfo.objects.get(pk=int(id)).btitle
-    #     return HttpResponse(name+"详情页")
-    #
-    # except Exception as e:
-    #     print(e)
+    except Exception as e:
+        print(e)
 
 
 '''
