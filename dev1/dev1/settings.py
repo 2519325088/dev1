@@ -26,8 +26,10 @@ SECRET_KEY = 'l$3a+@uno2d^2_z3kz5pe-gw4&f5@%svwv41yd3vk5gtzy^ujv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -47,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
 
+    # 使用表单提交，注释掉
+    # CSRF(Cross-site request forgery)跨站请求伪造，
     # 'django.middleware.csrf.CsrfViewMiddleware',
 
     'django.contrib.auth.middleware.AuthenticationMiddleware',

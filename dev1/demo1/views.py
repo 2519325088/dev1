@@ -2,9 +2,9 @@
 # 通过渲染templates中的网页可以将显示内容，
 # 比如登陆后的用户名，用户请求的数据，输出到网页。
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect,reverse,get_object_or_404,get_list_or_404
 
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 
 from .models import BookInfo ,HeroInfo
 
@@ -14,6 +14,8 @@ from django.template import loader
 
 
 def index(request):
+    # respons={'dasdad':"najnai"}
+    # return JsonResponse(respons)
     return render(request,'demo1/index.html',{'username':'lxl'})
 
 
@@ -24,24 +26,40 @@ def list(request):
 
 def delete(request,id):
     BookInfo.objects.get(pk=id).delete()
-
     bookInfo = BookInfo.objects.all()
-    # return HttpResponse('11')
-    return HttpResponseRedirect('/demo1/list/',{'lista':bookInfo})
+    return HttpResponseRedirect('/demo1/list/',{'bookk':bookInfo})
 
+def hdelete(request,id):
+    name=HeroInfo.objects.get(pk=id).hbook
+    HeroInfo.objects.get(pk=id).delete()
+    bname=BookInfo.objects.get(btitle=name)
+
+    # return HttpResponse(bname.id)
+    return HttpResponseRedirect('/demo1/detail/'+str(bname.id)+'/',{'bname':bname})
+
+
+def addbook(request):
+
+    return render(request,'demo1/addbook.html')
+
+def addbend(request):
+    bname=request.POST['bookname']
+    b1=BookInfo()
+    b1.btitle=bname
+    b1.save()
+    return HttpResponseRedirect('/demo1/list/')
 
 def addhero(request,id):
+    # book=get_object_or_404(BookInfo,PK=id)
     book=BookInfo.objects.get(pk=id)
     return render(request,'demo1/addhero.html', {'bookk': book})
 
 def addend(request):
-
     hname=request.POST['username']
     hsex=request.POST['usersex']
     hskill = request.POST['userskill']
     userid=request.POST['userid']
     book=BookInfo.objects.get(pk=userid)
-
     hero=HeroInfo()
     hero.hname=hname
     if hsex:

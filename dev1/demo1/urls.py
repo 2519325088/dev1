@@ -9,6 +9,9 @@ urlpatterns=[
     url(r'^list/$',views.list,name='list'),
     url(r'^detail/(\d+)/$',views.detail,name='detail'),
     url(r'^delete/(\d+)/$',views.delete,name='delete'),
+    url(r'^hdelete/(\d+)/$',views.hdelete,name='hdelete'),
+    url(r'^addbook/$',views.addbook,name='addbook'),
+    url(r'^addbend/$',views.addbend,name='addbend'),
     url(r'^addhero/(\d+)/$',views.addhero,name='addhero'),
     url(r'^addend/$',views.addend,name='addend'),
 
